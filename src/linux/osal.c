@@ -67,7 +67,7 @@ os_thread_t * os_thread_create (
    }
 
    pthread_attr_init (&attr);
-   pthread_attr_setstacksize (&attr, PTHREAD_STACK_MIN + stacksize);
+   // pthread_attr_setstacksize (&attr, PTHREAD_STACK_MIN + stacksize);
 
 #if defined(USE_SCHED_FIFO)
    CC_STATIC_ASSERT (_POSIX_THREAD_PRIORITY_SCHEDULING > 0);
@@ -237,7 +237,7 @@ uint32_t os_get_current_time_us (void)
 os_tick_t os_tick_current (void)
 {
    struct timespec ts;
-   os_tick_t       tick;
+   os_tick_t tick;
 
    clock_gettime (CLOCK_MONOTONIC, &ts);
    tick = ts.tv_sec;
