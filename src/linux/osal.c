@@ -85,6 +85,8 @@ os_thread_t * os_thread_create (
    }
 
    pthread_setname_np (*thread, name);
+   struct sched_param param = {.sched_priority = priority};
+   pthread_setschedparam (*thread, SCHED_RR, &param);
    return thread;
 }
 
